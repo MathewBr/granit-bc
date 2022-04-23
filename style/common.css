@@ -46,7 +46,6 @@ nav a {
    display: flex;
    flex-flow: column;
    justify-content: space-between;
-   border: solid thin blue;
 }
 
 #burg:hover {
