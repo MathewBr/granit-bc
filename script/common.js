@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-   toggleClass('burg', 'active', 'click');
+   toggleClass('burg', 'active', 'noneActive', 'click');
 });
 
-function toggleClass(id, classElem, event) {
+// use three states: init, active, nonactive to avoid triggering the animation when the page is reloaded
+function toggleClass(id, classActive, classNonActive, event) {
    let elem = document.getElementById(id);
    elem.addEventListener(event, () => {
-      elem.classList.toggle(classElem);
+      if (!elem.classList.contains(classActive) && !elem.classList.contains(classNonActive)) {
+         elem.classList.add(classActive);
+         return;
+      }
+      elem.classList.toggle(classActive);
+      elem.classList.toggle(classNonActive);
    });
 }

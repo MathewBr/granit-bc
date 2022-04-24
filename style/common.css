@@ -60,25 +60,24 @@ nav a {
    /* transition: all 1s; */
 }
 
-#burg.active {}
-
 /*-------------------------------*/
-#burg span:first-child {
-   /* transform: translateY(1.3rem) rotate(45deg) scaleX(1.3); */
+/*to avoid triggering the animation when the page is reloaded, two classes are used. Assigned js.*/
+#burg.noneActive span:first-child {
    transform: none;
    animation: burgFirstChildBack 300ms linear;
 }
 
-#burg span:nth-child(2) {
+#burg.noneActive span:nth-child(2) {
    transform: none;
    animation: burgMiddlChildBack 300ms linear;
 }
 
-#burg span:last-child {
+#burg.noneActive span:last-child {
    transform: none;
    animation: burgLastChildBack 300ms linear;
 }
 
+/*---*/
 #burg.active span:first-child {
    transform: translateY(1.3rem) rotate(45deg) scaleX(1.3);
    animation: burgFirstChild 300ms linear;
