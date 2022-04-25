@@ -107,7 +107,6 @@ nav a {
    height: 100vh;
    margin-top: 5rem;
    background: #f6f6f6 url(../background/20-03.jpg) no-repeat center/cover;
-   transform: translateY();
 }
 
 #main h1 {
