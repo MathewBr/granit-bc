@@ -27,6 +27,15 @@
    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
 }
 
+div.globWrap {
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   z-index: 99;
+   background-color: rgba(255, 255, 255, 0.5);
+}
+
 @media screen and (max-width: 786px) {
    nav {
       justify-content: flex-end;
