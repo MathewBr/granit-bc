@@ -101,16 +101,89 @@ nav a {
 }
 
 /*-------------------------------*/
+section {
+   /* height: 90vh; */
+   display: flex;
+   height: calc(100vh - 5rem);
+}
+
+section>* {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   /* width: 45%; */
+   /* vertical-align: middle; */
+}
+
+.line {
+   width: 20%;
+   height: 2px;
+   background-color: rgb(92, 21, 34);
+}
 
 #main {
-   text-align: center;
-   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
    margin-top: 5rem;
    background: #f6f6f6 url(../background/20-03.jpg) no-repeat center/cover;
 }
 
+#main>* {
+   text-align: center;
+}
+
 #main h1 {
    margin: 0;
+}
+
+#bigData {
+   /* display: flex; */
+   align-items: stretch;
+   background-color: #C85B6B;
+   /* align-items: center; */
+}
+
+#bigData>* {
+   /* display: flex; */
+   /* flex-direction: column; */
+   /* justify-content: center; */
+   /* width: 45%; */
+   /* vertical-align: middle; */
+}
+
+#trap {
+   width: 40%;
+   background-color: #C85B6B;
+   transform-origin: left bottom;
+   transform: skewX(-15deg);
+}
+
+#trap * {
+   transform: skewX(15deg);
+   /* transform: inherit; */
+}
+
+#withImg {
+   width: 50%;
+   background-color: white;
+}
+
+#bigData img {
+   width: 100%;
+   height: auto;
+}
+
+footer {
+   width: 100%;
+   text-align: center;
+   background-color: #2B6CA3;
+   color: white;
+   /* font-size: smaller; */
+   position: fixed;
+   bottom: 0;
+   box-shadow: 0px -2px 5px rgba(12, 18, 22, 0.9);
 }
 
 /**********keyframes burg*/

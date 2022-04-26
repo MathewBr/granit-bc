@@ -39,4 +39,26 @@
    nav a {
       display: none;
    }
+
+   #bigData {
+      /* flex-flow: column; */
+   }
+
+   section {
+      flex-flow: column;
+   }
+
+   #bigData>* {
+      width: 100%;
+      /* vertical-align: middle; */
+   }
+
+   #trap {
+      transform: skewX(0deg);
+   }
+
+   #trap * {
+      transform: skewX(0deg);
+      /* transform: inherit; */
+   }
 }

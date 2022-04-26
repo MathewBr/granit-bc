@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-   paralax(document.getElementById('main'), 0.3);
+   paralax(document.getElementById('main'), 0.5);
 
 });
 
