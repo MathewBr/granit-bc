@@ -36,14 +36,18 @@ function activeBlock(block, trigger) {
          block.classList.add('noneActive');
 
          //delete after transformation or animation
-         setTimeout(() => {
-            block.classList.remove('noneActive');
-            //remove the class here to avoid triggering the animation
-            trigger.classList.remove('noneActive');
-            block.place(block);
-            wrap.remove();
-            setBodyOverflow('v');
-         }, 5000);
+         block.addEventListener('animationend', (event) => {
+            event.stopPropagation();
+            //event fires multiple times
+            if (block.classList.contains('noneActive')) {
+               block.classList.remove('noneActive');
+               //remove the class here to avoid triggering the animation
+               trigger.classList.remove('noneActive');
+               block.place(block);
+               wrap.remove();
+               setBodyOverflow('v');
+            }
+         });
       };
    });
 }
