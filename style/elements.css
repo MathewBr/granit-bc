@@ -54,6 +54,7 @@ nav.active {
 nav.noneActive {
    height: 5rem;
    opacity: 0;
+   /*this animation works incorrectly*/
    animation: noneActiveMenu 400ms ease-in;
 }
 
@@ -62,7 +63,7 @@ nav.noneActive #burg {
    position: fixed;
    top: 1rem;
    right: 1rem;
-   animation: none;
+   /* animation: none; */
 }
 
 nav.active a {
@@ -165,5 +166,9 @@ nav.active a:nth-child(3) {
 
    #trap * {
       transform: skewX(0deg);
+   }
+
+   #feedback form>*:not(:first-child) {
+      width: 80%;
    }
 }

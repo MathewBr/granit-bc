@@ -40,12 +40,14 @@ function activeBlock(block, trigger) {
             event.stopPropagation();
             //event fires multiple times
             if (block.classList.contains('noneActive')) {
+               // setTimeout(() => {
                block.classList.remove('noneActive');
                //remove the class here to avoid triggering the animation
                trigger.classList.remove('noneActive');
                block.place(block);
                wrap.remove();
                setBodyOverflow('v');
+               // }, 0);
             }
          });
       };

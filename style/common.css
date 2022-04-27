@@ -101,7 +101,8 @@ nav a {
 }
 
 /*-------------------------------*/
-section {
+section,
+#feedback {
    /* height: 90vh; */
    display: flex;
    height: calc(100vh - 5rem);
@@ -173,6 +174,73 @@ section>* {
 #bigData img {
    width: 100%;
    height: auto;
+}
+
+#about {
+   background-color: aquamarine;
+}
+
+#feedback {
+   flex-direction: column;
+   background-color: rgb(2, 61, 91);
+   padding-bottom: 5rem;
+}
+
+#feedback form {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   height: 100%;
+   /* border: solid thin white; */
+}
+
+input[type="text"],
+input[type="email"] {
+   height: 3rem;
+   border-radius: 0.5rem;
+}
+
+textarea {
+   resize: vertical;
+   max-height: 6rem;
+   min-height: 3rem;
+   border-radius: 0.5rem;
+}
+
+#feedback form div:first-child {
+   margin-top: -1%;
+}
+
+#feedback form>*:not(:first-child) {
+   width: 60%;
+}
+
+#wrDoanlFile {
+   display: flex;
+   justify-content: center;
+   height: 3rem;
+}
+
+#wrDoanlFile * {
+   flex-grow: 1;
+}
+
+#doanlFile {
+   background-color: rgb(88, 232, 129);
+   border-radius: 0 0 0 2rem;
+}
+
+#doanlFile~input {
+   display: block;
+   background-color: rgb(92, 21, 34);
+   border-radius: 0 2rem 0 0;
+   /* box-shadow: none; */
+}
+
+#feedback form div.line {
+   width: 100%;
+   /* background-color: #f6f6f6; */
 }
 
 footer {
