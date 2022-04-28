@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
    paralax(document.getElementById('main'), 0.5);
-
+   inpupFile(document.getElementById('exFile'));
 });
 
 
@@ -50,6 +50,12 @@ class ElemPosition {
    isHidden() {
       this.hidden = (this.domRect.top >= this.windHeight || this.domRect.bottom <= 0) ? true : false;
    }
+}
+
+function inpupFile(elem) {
+   elem.addEventListener('change', (e) => {
+      elem.parentElement.firstChild.data = e.target.value.split('\\').pop();
+   });
 }
 
 

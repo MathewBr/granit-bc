@@ -198,14 +198,20 @@ section>* {
 input[type="text"],
 input[type="email"] {
    height: 3rem;
-   border-radius: 0.5rem;
+   /* border-radius: 0.5rem; */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+   outline: solid 2px red;
+   outline-offset: -2px;
 }
 
 textarea {
    resize: vertical;
    max-height: 6rem;
    min-height: 3rem;
-   border-radius: 0.5rem;
+   /* border-radius: 0.5rem; */
 }
 
 #feedback form div:first-child {
@@ -216,31 +222,8 @@ textarea {
    width: 60%;
 }
 
-#wrDoanlFile {
-   display: flex;
-   justify-content: center;
-   height: 3rem;
-}
-
-#wrDoanlFile * {
-   flex-grow: 1;
-}
-
-#doanlFile {
-   background-color: rgb(88, 232, 129);
-   border-radius: 0 0 0 2rem;
-}
-
-#doanlFile~input {
-   display: block;
-   background-color: rgb(92, 21, 34);
-   border-radius: 0 2rem 0 0;
-   /* box-shadow: none; */
-}
-
 #feedback form div.line {
    width: 100%;
-   /* background-color: #f6f6f6; */
 }
 
 footer {
@@ -248,7 +231,6 @@ footer {
    text-align: center;
    background-color: #2B6CA3;
    color: white;
-   /* font-size: smaller; */
    position: fixed;
    bottom: 0;
    box-shadow: 0px -2px 5px rgba(12, 18, 22, 0.9);

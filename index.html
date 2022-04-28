@@ -78,7 +78,7 @@
    </section>
 
    <div id="feedback">
-      <form>
+      <form name="formFeedback">
          <div>
             <h2>CONTACT US</h2>
             <div class="line"></div>
@@ -88,10 +88,16 @@
          <input type="email" name="email" placeholder="Email">
          <textarea name="comment" placeholder="Please provide any additional information here"></textarea>
 
+
+
          <div id="wrDoanlFile">
-            <input id="doanlFile" type="file" name="file" value="you can attach a file">
+            <label id="labelFile" tabindex="0">you can attach a file <input id="exFile" type="file" name="exFile"
+                  tabindex="-1"></label>
+            <!-- <input id="doanlFile" type="file" name="file" value="you can attach a file"> -->
             <input id="botton" type="submit" value="Submit">
          </div>
+
+
       </form>
    </div>
 

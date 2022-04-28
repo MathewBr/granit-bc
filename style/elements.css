@@ -71,7 +71,6 @@ nav.active a {
    font-size: xx-large;
 }
 
-/*my shame*/
 nav.active a:not(:first-child) {
    transform: translateY(-200%);
    animation: drop 200ms cubic-bezier(1, .3, .73, 1.15) 400ms;
@@ -81,6 +80,57 @@ nav.active a:nth-child(3) {
    transform: translateY(-400%);
    animation: dropLast 200ms cubic-bezier(1, .3, .73, 1.15) 450ms;
 }
+
+/*******************/
+#wrDoanlFile {
+   display: flex;
+   height: 3rem;
+   /* outline: solid thin red; */
+}
+
+#labelFile {
+   width: 80%;
+   background-color: aqua;
+   cursor: pointer;
+   vertical-align: middle;
+   /* text-align: center; */
+   overflow: hidden;
+   white-space: nowrap;
+   line-height: 3rem;
+}
+
+#labelFile:focus,
+#labelFile:hover {
+   background-color: rebeccapurple;
+   outline: dotted thin #000;
+   /*default state emulation for Chrome, Opera, Safari*/
+   /* outline: -webkit-focus-ring-color auto 5px;   */
+}
+
+/* .required {
+   outline: solid 2px red;
+   outline-offset: -2px;
+} */
+
+#labelFile * {
+   pointer-events: none;
+}
+
+#exFile {
+   width: 0.1px;
+   height: 0.1px;
+   opacity: 0;
+   overflow: hidden;
+   z-index: -10;
+   background-color: antiquewhite;
+}
+
+#botton {
+   width: 20%;
+   /* outline: solid thin yellow; */
+}
+
+/*******************/
 
 @keyframes activeMenu {
    from {
