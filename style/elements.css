@@ -188,6 +188,22 @@ nav.active a:nth-child(3) {
    }
 }
 
+@keyframes appeatanceBlock {
+   from {
+      opacity: 0;
+   }
+
+   80% {
+      opacity: 0;
+      transform: scale(1.2);
+   }
+
+   to {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
 /**/
 @media screen and (max-width: 786px) {
    nav {
@@ -206,6 +222,15 @@ nav.active a:nth-child(3) {
       flex-flow: column;
    }
 
+   #main h2 {
+      font-size: 2em;
+   }
+
+   #main h3 {
+      font-size: 2em;
+      line-height: 90%;
+   }
+
    #bigData>* {
       width: 100%;
    }
@@ -220,5 +245,15 @@ nav.active a:nth-child(3) {
 
    #feedback form>*:not(:first-child) {
       width: 80%;
+   }
+}
+
+@media screen and (max-width: 372px) {
+   #main h2 {
+      font-size: 1.8em;
+   }
+
+   #main h3 {
+      font-size: 1.7em;
    }
 }

@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
    paralax(document.getElementById('main'), 0.5);
    inpupFile(document.getElementById('exFile'));
+   buttonDownUp(document.querySelector('button'));
 });
 
 
 function paralax(elem, speed) {
+   if (!elem) return;
    if (getComputedStyle(elem).position === 'static') elem.style.position = 'relative';
    let backElem = document.createElement('div');
    backElem.style.cssText = `width: 100%; height: 100%; position: absolute; top: 0; z-index: -1; background: ${getComputedStyle(elem).background};`;
@@ -58,4 +60,8 @@ function inpupFile(elem) {
    });
 }
 
+function buttonDownUp(elem) {
+   elem.addEventListener('pointerdown', () => elem.classList.toggle('down'));
+   elem.addEventListener('pointerup', () => elem.classList.toggle('down'));
+}
 
