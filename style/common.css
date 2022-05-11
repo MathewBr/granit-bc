@@ -1,3 +1,7 @@
+html {
+   /* scroll-behavior: smooth; */
+}
+
 body {
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -128,23 +132,25 @@ section>* {
    display: flex;
    flex-direction: column;
    justify-content: space-around;
+   /* justify-content: start; */
    align-items: center;
    margin-top: 5rem;
    background: #f6f6f6 url(../background/20-03.jpg) no-repeat center/cover;
+}
+
+#careers {
+   margin-top: 5rem;
 }
 
 #main>* {
    text-align: center;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap'); */
-
 #main h1 {
    font-family: 'Oswald', sans-serif;
    font-weight: 200;
    letter-spacing: 00.5rem;
-   margin: 3rem 0 -3rem 0;
+   margin: -2rem 0 -3rem 0;
    /* margin: 3rem 0 0 0; */
    /* place-self: end center; */
 }
@@ -183,6 +189,8 @@ section>* {
    font-weight: 400;
    transition: background-color 300ms 20ms;
    cursor: pointer;
+   /* display: none; */
+   /* z-index: 100; */
 }
 
 #main button:hover {
@@ -233,6 +241,10 @@ section>* {
 
 #about {
    background-color: aquamarine;
+}
+
+#ceo {
+   background: silver url(../background/pat-of-light.jpg) no-repeat center/cover;
 }
 
 #feedback {

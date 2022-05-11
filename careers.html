@@ -15,6 +15,9 @@
    <link rel="stylesheet" type="text/css" href="style/common.css">
    <link rel="stylesheet" type="text/css" href="style/elements.css">
 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
    <script type="text/javascript" src="script/common.js"></script>
    <script type="text/javascript" src="script/elements.js"></script>
    <title>granite</title>
@@ -24,27 +27,24 @@
    <header>
       <div id="logo"><a href=""><img src="./background/logo-origin.png"></a></div>
       <nav id="modifiable">
-         <a href="index.html">Home</a>
-         <a href="">Careers</a>
-         <a href="">Contact</a>
+         <a href="index.html" data-newcontent="#main #bigData #about #focus #ceo">Home</a>
+         <a href="#careers">Careers</a>
+         <a href="#feedback">Contact</a>
          <div id="burg"><span></span><span></span><span></span></div>
       </nav>
    </header>
 
-
-   <section id="careers">
-      <div>
-         <h2>Careers</h2>
-         <p>We are looking for software engineers who are passionate about distributed systems, performance and
-            low-level
-            programming.
-            Qualifications: strong computer science foundations, experience with concurrency, strong C++.</p>
-      </div>
-
-   </section>
-
-
-
+   <div id="changing">
+      <section id="careers">
+         <div>
+            <h2>Careers</h2>
+            <p>We are looking for software engineers who are passionate about distributed systems, performance and
+               low-level
+               programming.
+               Qualifications: strong computer science foundations, experience with concurrency, strong C++.</p>
+         </div>
+      </section>
+   </div>
 
    <div id="feedback">
       <form name="formFeedback">
