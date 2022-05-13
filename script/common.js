@@ -20,7 +20,6 @@ function toggleClass(id, classActive, classNonActive, event) {
 function activeBlock(block, trigger) {
    if (getComputedStyle(document.body).position === 'static') document.body.style.position = 'relative';
    block.place = getPlaceElem(block);
-   // console.log(block.place);
    let wrap;
    trigger.addEventListener('click', () => {
       if (trigger.classList.contains('active')) {
@@ -37,17 +36,14 @@ function activeBlock(block, trigger) {
 
          //delete after transformation or animation
          block.addEventListener('animationend', (event) => {
-            event.stopPropagation();
             //event fires multiple times
             if (block.classList.contains('noneActive')) {
-               // setTimeout(() => {
                block.classList.remove('noneActive');
                //remove the class here to avoid triggering the animation
                trigger.classList.remove('noneActive');
                block.place(block);
                wrap.remove();
                setBodyOverflow('v');
-               // }, 0);
             }
          });
       };

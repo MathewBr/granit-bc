@@ -1,59 +1,101 @@
 document.addEventListener('DOMContentLoaded', () => {
-   paralax(document.getElementById('main'), 0.5);
    inpupFile(document.getElementById('exFile'));
-   // let button = document.querySelector('button');
    buttonDownUp(document.querySelectorAll('button'));
    linksController(document.querySelectorAll('header a'));
+
+   let parent = document.getElementById('main');
+   let header = document.body.querySelector('header');
+   let footer = document.body.querySelector('footer');
+   let paralaxElem = getParalaxElem(parent);
+
+   let windowHeight = document.documentElement.clientHeight;
+   let status = getCoordinatesElement(parent, header.clientHeight, footer.clientHeight);
+
+   window.addEventListener('resize', () => {
+      //обновить все параметры, перезапустить fn
+      windowHeight = document.documentElement.clientHeight;
+      status = getCoordinatesElement(parent, header.clientHeight, footer.clientHeight); //пересчитать статус
+      if (status && status.indicateParalax) {
+         paralaxWork(paralaxElem, status.subScroll, 0.5, true, status.heightViewport);
+      }
+   });
+
+   window.addEventListener('scroll', () => {
+      status = getCoordinatesElement(parent, header.clientHeight, footer.clientHeight); //пересчитать статус
+
+      if (status && status.indicateParalax) {
+         paralaxWork(paralaxElem, status.subScroll, 0.5, true, status.heightViewport);
+      }
+   });
+
+   let mutationObj = document.getElementById('changing');
+   let observer = new MutationObserver(() => {
+      windowHeight = document.documentElement.clientHeight;
+      status = getCoordinatesElement(parent, header.clientHeight, footer.clientHeight);
+      parent = document.getElementById('main');
+      paralaxElem = getParalaxElem(parent);
+      if (status && status.indicateParalax) {
+         // paralaxWork(paralaxElem, status.subScroll, 0.5, true, status.heightViewport);
+      }
+   });
+   observer.observe(mutationObj, {childList: true});
 });
 
 
-function paralax(elem, speed) {
-   if (!elem) return;
-   if (getComputedStyle(elem).position === 'static') elem.style.position = 'relative';
-   let backElem = document.createElement('div');
-   backElem.style.cssText = `width: 100%; height: 100%; position: absolute; top: 0; z-index: -1; background: ${getComputedStyle(elem).background};`;
-   elem.style.background = 'none';
-   elem.style.overflow = 'hidden';
-   elem.append(backElem);
-
-   let observ = new ElemPosition(elem);
-   observ.observer();
-   //initially set offset to avoid jump at start of scrolling
-   //maybe it's not needed
-   backElem.style.transform = `translateY(${observ.domRect.top * speed * -1}px)`;
-
-   window.addEventListener('scroll', () => {
-      if (!observ.hidden) {
-         backElem.style.transform = `translateY(${observ.domRect.top * speed * -1}px)`;
+function getParalaxElem(elem) {
+   let backElem;
+   if (!elem) {
+      return;
+   } else {
+      if (getComputedStyle(elem).position === 'static') elem.style.position = 'relative';
+      if (elem.querySelector('.paralax')) {
+         backElem = elem.querySelector('.paralax');
+      } else {
+         backElem = document.createElement('div');
+         backElem.style.cssText = `width: 100%; height: 100%; position: absolute; top: 0; z-index: -1;`;
+         backElem.setAttribute('class', 'paralax');
+         copyBackground(elem, backElem);
+         elem.style.background = 'none';
+         elem.style.overflow = 'hidden';
+         elem.append(backElem);
       }
-   });
+      return backElem;
+   }
+
 };
 
-//object that contains actual metrics
-class ElemPosition {
-   constructor(elem) {
-      this.elem = elem;
-      this.domRect = elem.getBoundingClientRect();
-      this.windHeight = document.documentElement.clientHeight;
-      this.hidden = (this.domRect.top >= this.windHeight || this.domRect.bottom <= 0) ? true : false;
+function paralaxWork(paralaxElem, subScroll, speed, ajustHeight = false, heightViewport) {
+   if (!paralaxElem) return;
+   let heightParent = paralaxElem.parentElement.clientHeight;
+   if (ajustHeight && heightViewport) {
+      // paralaxElem.style.height = speed <= 1 ? `${heightViewport - (heightViewport - heightParent) * speed}px` : `${heightParent}px`;
+      //heightParent + разница остатка пути (heightViewport-heightParent) - часть остатка пути, которую успеет пройти на данной скорости
+      paralaxElem.style.height = `${heightViewport - (heightViewport - heightParent) * speed}px`;
    }
+   //убрать прокрутку (- subScroll), + сместить на своей скорости (subScroll * speed), задать начальное смещение  + heightParent * (1 - speed)
+   paralaxElem.style.transform = `translateY(${subScroll * (speed - 1) + heightParent * (1 - speed)}px)`;
+}
 
-   observer() {
-      window.addEventListener('resize', () => {
-         this.windHeight = document.documentElement.clientHeight;
-         this.domRect = this.elem.getBoundingClientRect();
-         this.isHidden();
-      });
+function getCoordinatesElement(elem, offsetTop = 0, offsetBottom = 0) {
+   if (!elem) return;
+   let recElem = elem.getBoundingClientRect();// положение элемента относительно окна
+   //верх элемента ниже верхней границы ? сверху скрыто 0 :  скрыто сверху >= , чем высота элемента ? полностью скрыт сверху: скрытая с верху часть элемента
+   let topSideHidden = recElem.top >= (0 + offsetTop) ? 0 : ((0 + offsetTop) - recElem.top) >= recElem.height ? 1 : ((0 + offsetTop) - recElem.top) / recElem.height;
+   //низ элемента выше нижней границы ? снизу скрыто 0 : снизу скрыто больше или =, чем высота элемента ? элемент скрыт снизу полностью : скрытая внизу часть элемента
+   let bottomSideHidden = (recElem.bottom <= (document.documentElement.clientHeight - offsetBottom)) ? 0 : (recElem.bottom - (document.documentElement.clientHeight - offsetBottom)) >= recElem.height ? 1 : (recElem.bottom - (document.documentElement.clientHeight - offsetBottom)) / recElem.height;
+   //когда запускать паралакс
+   let indicateParalax = topSideHidden < 1 && bottomSideHidden < 1 ? true : false;
+   //посчитать прокрутку относительно viewport
+   let subScroll = indicateParalax === true ? recElem.top - (0 + offsetTop) + recElem.height : 0;
+   let heightViewport = (document.documentElement.clientHeight - offsetBottom) - (0 + offsetTop);
+   return {topSideHidden, bottomSideHidden, indicateParalax, subScroll, heightViewport};
+}
 
-      window.addEventListener('scroll', () => {
-         this.domRect = this.elem.getBoundingClientRect();
-         this.isHidden();
-      });
-   }
-
-   isHidden() {
-      this.hidden = (this.domRect.top >= this.windHeight || this.domRect.bottom <= 0) ? true : false;
-   }
+function copyBackground(donor, recipient) {
+   let property = ['backgroundAttachment', 'backgroundBlendMode', 'backgroundClip', 'backgroundColor', 'backgroundImage', 'backgroundOrigin', 'backgroundPositionX', 'backgroundPositionY', 'backgroundRepeat', 'backgroundSize'];
+   property.forEach((elem) => {
+      if (getComputedStyle(donor)[elem]) recipient.style[elem] = getComputedStyle(donor)[elem];
+   })
 }
 
 function inpupFile(elem) {
@@ -66,16 +108,22 @@ function buttonDownUp(elems) {
    if (!elems) return;
    for (let elem of elems) {
       if (!elem) continue;
-      elem.addEventListener('pointerdown', () => elem.classList.toggle('down'));
+      elem.addEventListener('pointerdown', (e) => {
+         e.preventDefault();
+         elem.classList.toggle('down');
+      });
       elem.addEventListener('pointerup', () => elem.classList.toggle('down'));
    }
 }
-//
+//*************************************************************************************************** */
 async function linksController(kit) {
+   let click = new Event("click");
+   let burg = document.getElementById('burg');
    for (let a of kit) {
       a.addEventListener('click', async (e) => {
          e.preventDefault();
-
+         if (getComputedStyle(burg).display != 'none') burg.dispatchEvent(click);
+         // paralax(document.getElementById('main'), 0.5);
          /**
           * determine which page the click is on
           * if the attribute value is an anchor
@@ -89,8 +137,6 @@ async function linksController(kit) {
           *             if not - start the download, show process, display, rewind
           */
 
-         let page = window.location.href;
-         // let page = window.location.pathname;
          let href = getHref(a);
          let offset = document.body.querySelector('header').clientHeight;
          let changing = document.getElementById('changing');
@@ -125,7 +171,6 @@ async function linksController(kit) {
             }
          }
          if (whatTypeHref(href) == 'link') {
-            // let changing = document.getElementById('changing');
             if (!changing.cash || !changing.cash.loaded) {
                let ancors = getAncorNewContent(a);
                let content = await getContent(href);
@@ -232,6 +277,7 @@ async function linksController(kit) {
          return 0;
       }
    }
+
 }
 
 function animate({duration, draw, timing}) {

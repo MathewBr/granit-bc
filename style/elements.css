@@ -63,7 +63,6 @@ nav.noneActive #burg {
    position: fixed;
    top: 1rem;
    right: 1rem;
-   /* animation: none; */
 }
 
 nav.active a {
@@ -85,7 +84,6 @@ nav.active a:nth-child(3) {
 #wrDoanlFile {
    display: flex;
    height: 3rem;
-   /* outline: solid thin red; */
 }
 
 #labelFile {
@@ -93,7 +91,6 @@ nav.active a:nth-child(3) {
    background-color: aqua;
    cursor: pointer;
    vertical-align: middle;
-   /* text-align: center; */
    overflow: hidden;
    white-space: nowrap;
    line-height: 3rem;
@@ -106,11 +103,6 @@ nav.active a:nth-child(3) {
    /*default state emulation for Chrome, Opera, Safari*/
    /* outline: -webkit-focus-ring-color auto 5px;   */
 }
-
-/* .required {
-   outline: solid 2px red;
-   outline-offset: -2px;
-} */
 
 #labelFile * {
    pointer-events: none;
@@ -127,7 +119,6 @@ nav.active a:nth-child(3) {
 
 #botton {
    width: 20%;
-   /* outline: solid thin yellow; */
 }
 
 /*******************/
