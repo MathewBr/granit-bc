@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body {
+         position: relative;
+         margin: 0;
+         background-color: rgba(149, 141, 195, 0.5);
+      }
+
+      /**********/
+      #gradient {
+         position: relative;
+         height: 100vh;
+         background-image: linear-gradient(45deg, rgba(163, 231, 214, 0.5), transparent);
+         overflow: hidden;
+      }
+
+      #layer0 {
+         position: absolute;
+         width: 200%;
+         height: 200%;
+         background-image: radial-gradient(15% 14% at 33% 50%, rgba(243, 230, 59, 0.7), transparent);
+         transform-origin: center;
+         transform: translate(-25%, -25%) rotate(-20deg);
+      }
+
+      #layer1 {
+         position: absolute;
+         width: 200%;
+         height: 200%;
+         background-image: radial-gradient(20% 14% at 58% 48%, rgba(248, 115, 180, 0.7), transparent);
+         transform-origin: center;
+         transform: translate(-25%, -25%) rotate(25deg);
+      }
+
+      /**********/
+
+
+
+      #wraper {}
+   </style>
+</head>
+
+<body>
+   <div id="gradient">
+      <div id="layer0"></div>
+      <div id="layer1"></div>
+   </div>
+
+   <div id="wraper">
+   </div>
+</body>
+
+</html>
