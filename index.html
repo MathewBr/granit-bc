@@ -20,67 +20,84 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
    <script type="text/javascript" src="script/common.js"></script>
    <script type="text/javascript" src="script/elements.js"></script>
-   <title>granite</title>
+   <title>home | granite</title>
+   <noscript>
+      <style>
+         html {
+            scroll-behavior: smooth;
+         }
+      </style>
+   </noscript>
 </head>
 
 <body>
    <header>
-      <div id="logo"><a href=""><img src="./background/logo-origin.png"></a></div>
+      <div id="logo"><a href="#main"><img src="./background/logo-origin.png"></a></div>
       <nav id="modifiable">
-         <a href="">Home</a>
-         <a href="careers.html">Careers</a>
-         <a href="">Contact</a>
+         <a href="#main">Home</a>
+         <a href="careers.html" data-newcontent="#careers">Careers</a>
+         <a href="#feedback">Contact</a>
          <div id="burg"><span></span><span></span><span></span></div>
       </nav>
    </header>
-   <section id="main">
-      <h1>technologies</h1>
-      <!-- <div class="line"></div> -->
-      <h2>All apps and services today operate with large volumes of user data.</h2>
-      <p>Customers expect real-time
-         data-intensive product features, while your stakeholders want instant analytical insights into product
-         performance.</p>
-      <h3>All apps and services today operate with large volumes of user data.</h3>
-      <button>Learn More</button>
-   </section>
 
-   <section id="bigData">
-      <div id="trap">
-         <h2>Big Data</h2>
-         <p>Data brings big responsibilities to handle user information in a reliable,
-            secure and compliant fashion.</p>
-      </div>
-      <div id="withImg">
-         <img src="./background/bigDate-min.svg" alt="big Data">
-      </div>
-   </section>
+   <div id="changing">
+      <section id="main">
+         <h1>technologies</h1>
+         <!-- <div class="line"></div> -->
+         <h2>All apps and services today operate with large volumes of user data.</h2>
+         <p>Customers expect real-time
+            data-intensive product features, while your stakeholders want instant analytical insights into product
+            performance.</p>
+         <h3>All apps and services today operate with large volumes of user data.</h3>
+         <button>Learn More</button>
+      </section>
 
-   <section id="about">
-      <div>
-         <img src="./background/bigData.png" alt="about">
-      </div>
-      <div>
-         <h2>n log(n)</h2>
-         <p>n log(n) techonogies is a software development and consulting company that specializes in big data storage
-            and serving
-            systems.
-            We help our clients reliably operate modern distributed stack.</p>
-      </div>
-   </section>
+      <section id="bigData">
+         <div id="trap">
+            <h2>Big Data</h2>
+            <p>Data brings big responsibilities to handle user information in a reliable,
+               secure and compliant fashion.</p>
+         </div>
+         <div id="withImg">
+            <img src="./background/bigDate-min.svg" alt="big Data">
+         </div>
+      </section>
 
-   <section id="focus">
-      <div>
-         <h2>our competencies</h2>
-         <p>We focus on efficiency and reliablity, grounded in our experience building data-intensive systems at largest
-            scale.</p>
-      </div>
+      <section id="about">
+         <div>
+            <img src="./background/bigData.png" alt="about">
+         </div>
+         <div>
+            <h2>n log(n)</h2>
+            <p>n log(n) techonogies is a software development and consulting company that specializes in big data
+               storage
+               and serving
+               systems.
+               We help our clients reliably operate modern distributed stack.</p>
+         </div>
+      </section>
 
-      <div>
-         <img src="./background/focus.png" alt="focus">
-      </div>
-   </section>
+      <section id="focus">
+         <div>
+            <h2>our competencies</h2>
+            <p>We focus on efficiency and reliablity, grounded in our experience building data-intensive systems at
+               largest
+               scale.</p>
+         </div>
+         <div>
+            <img src="./background/focus.png" alt="focus">
+         </div>
+      </section>
+
+      <section id="ceo">
+      </section>
+   </div>
 
    <div id="feedback">
       <form name="formFeedback">
@@ -93,15 +110,11 @@
          <input type="email" name="email" placeholder="Email">
          <textarea name="comment" placeholder="Please provide any additional information here"></textarea>
 
-
-
          <div id="wrDoanlFile">
             <label id="labelFile" tabindex="0">you can attach a file <input id="exFile" type="file" name="exFile"
                   tabindex="-1"></label>
             <input id="botton" type="submit" value="Submit">
          </div>
-
-
       </form>
    </div>
 

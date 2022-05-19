@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body {
+         position: relative;
+         margin: 0;
+         background-color: rgba(149, 141, 195, 0.5);
+         /* height: 2000px;
+          */
+      }
+
+      /**********/
+      #gradient {
+         position: relative;
+         /* height: 100vh; */
+         height: 100%;
+         background-image: linear-gradient(45deg, rgba(163, 231, 214, 0.5), transparent);
+         overflow: hidden;
+      }
+
+      #layer0 {
+         position: absolute;
+         width: 200%;
+         height: 200%;
+         background-image: radial-gradient(15% 14% at 33% 50%, rgba(243, 230, 59, 0.7), transparent);
+         transform-origin: center;
+         transform: translate(-25%, -25%) rotate(-20deg);
+      }
+
+      #layer1 {
+         position: absolute;
+         width: 200%;
+         height: 200%;
+         background-image: radial-gradient(20% 14% at 58% 48%, rgba(248, 115, 180, 0.7), transparent);
+         transform-origin: center;
+         transform: translate(-25%, -25%) rotate(25deg);
+      }
+
+      /**********/
+      #wraper {
+         position: absolute;
+         top: 0;
+         width: 100vw;
+         height: 100vh;
+         background-color: rgba(242, 242, 242, 0.3);
+      }
+
+      #feedback {
+         position: absolute;
+         right: 0;
+         top: 0;
+         bottom: 0;
+         display: flex;
+         flex-direction: column-reverse;
+         overflow: auto;
+      }
+
+      #feedback * {
+         margin: 0.5rem 0;
+         width: 100%;
+      }
+
+      form {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+         align-items: center;
+         background-color: rgba(242, 242, 242, 1);
+         border-radius: 1rem;
+      }
+
+      textarea {
+         resize: vertical;
+      }
+
+      #labelFile {}
+
+      #exFile {
+         width: 1px;
+         height: 1px;
+         opacity: 0;
+      }
+
+      .label {
+
+         border: solid thin gray;
+      }
+
+      .label * {
+         display: block;
+      }
+
+      .label *:first-child {
+         /* transform: translateY(-100%); */
+      }
+
+      @media screen and (max-width: 786px) {
+         /* #feedback {
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+         } */
+      }
+   </style>
+</head>
+
+<body>
+   <div id="gradient">
+      <div id="layer0"></div>
+      <div id="layer1"></div>
+   </div>
+
+   <div id="wraper">
+      <div id="feedback">
+         <form name="formFeedback">
+            <div>
+               <h2>CONTACT US</h2>
+               <div class="line"></div>
+            </div>
+            <label class="label"><span>Name</span><input type="text" name="name" placeholder=""></label>
+            <label class="label"><span>Email</span><input type="email" name="email" placeholder=""></label>
+            <label class="label"><span>Please provide any additional information here</span><textarea name="comment"
+                  placeholder=""></textarea></label>
+            <label id="labelFile" class="label" tabindex="0"><span>You can attach a file</span><input id="exFile"
+                  type="file" name="exFile" tabindex="-1"></label>
+            <input id="botton" type="submit" value="Submit">
+         </form>
+      </div>
+   </div>
+
+   <!-- <div style="width: 200px; height: 200px; background-color: beige; overflow-y: scroll;">
+      <div style="width: 150px; height: 400px; background-color: antiquewhite; opacity: 0.5;">
+      </div>
+   </div> -->
+</body>
+
+</html>

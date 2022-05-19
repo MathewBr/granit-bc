@@ -1,3 +1,7 @@
+html {
+   /*  */
+}
+
 body {
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -103,10 +107,7 @@ nav a {
 /*-------------------------------*/
 section,
 #feedback {
-   /* height: 90vh; */
    display: flex;
-   /* height: calc(100vh - 5rem); */
-   /* height: 100vh; */
    min-height: calc(100vh - 5rem);
 }
 
@@ -114,8 +115,6 @@ section>* {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   /* width: 45%; */
-   /* vertical-align: middle; */
 }
 
 .line {
@@ -133,20 +132,21 @@ section>* {
    background: #f6f6f6 url(../background/20-03.jpg) no-repeat center/cover;
 }
 
+#careers {
+   margin-top: 5rem;
+   /* height: 200vh; */
+
+}
+
 #main>* {
    text-align: center;
 }
-
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap'); */
 
 #main h1 {
    font-family: 'Oswald', sans-serif;
    font-weight: 200;
    letter-spacing: 00.5rem;
-   margin: 3rem 0 -3rem 0;
-   /* margin: 3rem 0 0 0; */
-   /* place-self: end center; */
+   margin: -2rem 0 -3rem 0;
 }
 
 #main h2 {
@@ -172,7 +172,6 @@ section>* {
    align-items: center;
    border-radius: 0.7rem;
    background-color: rgb(46, 46, 46);
-   /* color: rgb(227, 230, 242); */
    color: silver;
    box-shadow: 0px 3px 5px rgba(1, 11, 18, 0.5);
    width: 12rem;
@@ -195,18 +194,8 @@ section>* {
 }
 
 #bigData {
-   /* display: flex; */
    align-items: stretch;
    background-color: #C85B6B;
-   /* align-items: center; */
-}
-
-#bigData>* {
-   /* display: flex; */
-   /* flex-direction: column; */
-   /* justify-content: center; */
-   /* width: 45%; */
-   /* vertical-align: middle; */
 }
 
 #trap {
@@ -218,7 +207,6 @@ section>* {
 
 #trap * {
    transform: skewX(15deg);
-   /* transform: inherit; */
 }
 
 #withImg {
@@ -235,6 +223,10 @@ section>* {
    background-color: aquamarine;
 }
 
+#ceo {
+   background: silver url(../background/pat-of-light.jpg) no-repeat center/cover;
+}
+
 #feedback {
    flex-direction: column;
    background-color: rgb(2, 61, 91);
@@ -247,13 +239,11 @@ section>* {
    justify-content: space-around;
    align-items: center;
    height: 100%;
-   /* border: solid thin white; */
 }
 
 input[type="text"],
 input[type="email"] {
    height: 3rem;
-   /* border-radius: 0.5rem; */
 }
 
 input[type="text"]:focus,
@@ -266,7 +256,6 @@ textarea {
    resize: vertical;
    max-height: 6rem;
    min-height: 3rem;
-   /* border-radius: 0.5rem; */
 }
 
 #feedback form div:first-child {
