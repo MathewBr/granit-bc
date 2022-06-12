@@ -122,6 +122,28 @@ nav.active a:nth-child(3) {
 }
 
 /*******************/
+#careers {
+   overflow: hidden;
+}
+
+#careers h2 {
+   text-align: center;
+   /* font-size: 120%; */
+}
+
+#careers img {
+   display: block;
+   width: 80%;
+   height: auto;
+   margin: 3rem auto;
+}
+
+#careers p {
+   margin: 2rem;
+   font-weight: bold;
+}
+
+/*******************/
 
 @keyframes activeMenu {
    from {

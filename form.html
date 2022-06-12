@@ -5,21 +5,19 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
    <title>Document</title>
    <style>
       body {
          position: relative;
          margin: 0;
          background-color: rgba(149, 141, 195, 0.5);
-         /* height: 2000px;
-          */
       }
 
       /**********/
       #gradient {
          position: relative;
-         /* height: 100vh; */
-         height: 100%;
+         height: 100vh;
          background-image: linear-gradient(45deg, rgba(163, 231, 214, 0.5), transparent);
          overflow: hidden;
       }
@@ -43,15 +41,16 @@
       }
 
       /**********/
-      #wraper {
+      .wrap_form {
          position: absolute;
          top: 0;
          width: 100vw;
          height: 100vh;
-         background-color: rgba(242, 242, 242, 0.3);
+         background-color: rgba(242, 242, 242, 0.5);
+         overflow: hidden;
       }
 
-      #feedback {
+      .conteiner_form {
          position: absolute;
          right: 0;
          top: 0;
@@ -59,11 +58,7 @@
          display: flex;
          flex-direction: column-reverse;
          overflow: auto;
-      }
-
-      #feedback * {
-         margin: 0.5rem 0;
-         width: 100%;
+         padding-left: 1rem;
       }
 
       form {
@@ -73,72 +68,208 @@
          align-items: center;
          background-color: rgba(242, 242, 242, 1);
          border-radius: 1rem;
+         box-shadow: -0.2rem -0.2rem 0.5rem rgba(58, 92, 117, 0.8);
+         color: gray;
       }
 
-      textarea {
-         resize: vertical;
+      .title {
+         position: relative;
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         /* outline: solid thin green; */
       }
 
-      #labelFile {}
-
-      #exFile {
-         width: 1px;
-         height: 1px;
-         opacity: 0;
+      #cross {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         width: 20px;
+         height: 20px;
+         /* background-color: red; */
+         position: absolute;
+         top: 50%;
+         right: 12px;
+         transform: translateY(-50%);
+         cursor: pointer;
       }
 
-      .label {
-
-         border: solid thin gray;
+      #cross * {
+         height: 3px;
+         background-color: gray;
+         /* transform-origin: right center; */
+         border-radius: 1.5px;
       }
 
-      .label * {
+      #cross *:first-child {
+         transform-origin: right top;
+         /* transform: rotate(-45deg) scaleX(1.3) translateX(-1px); */
+         transform: rotate(-45deg) scaleX(1.25);
+      }
+
+      #cross *:last-child {
+         transform-origin: right bottom;
+         transform: rotate(45deg) scaleX(1.25);
+      }
+
+      .elem_form {
+         position: relative;
+         width: 90%;
+         margin: 1rem;
+      }
+
+      .elem_form * {
+         box-sizing: border-box;
          display: block;
       }
 
-      .label *:first-child {
-         /* transform: translateY(-100%); */
+      input,
+      #label_file {
+         width: 100%;
+         height: 2.5rem;
+         border-radius: 0.8rem;
+         border-color: gray;
+         background-color: rgba(242, 242, 242, 1);
       }
 
-      @media screen and (max-width: 786px) {
-         /* #feedback {
-            left: 0;
-            right: 0;
+      .label_input {
+         position: absolute;
+         transform: translate(1rem, -100%);
+      }
+
+      .elem_form textarea {
+         width: 100%;
+         min-height: 4rem;
+         resize: vertical;
+         border-radius: 0.8rem;
+         padding: 0.5rem;
+         background-color: rgba(242, 242, 242, 1);
+         border-width: 2px;
+         border-color: gray;
+      }
+
+      #input_file {
+         opacity: 0;
+      }
+
+      #label_file {
+         transform: none;
+         border-style: solid;
+         border-width: 2px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         padding: 1rem;
+         cursor: pointer;
+         overflow: hidden;
+      }
+
+      @media screen and (max-width: 372px) {
+         .conteiner_form {
+            position: absolute;
             bottom: 0;
-            width: auto;
-         } */
+            right: 3%;
+            left: 3%;
+            padding-left: 0;
+         }
       }
    </style>
 </head>
 
 <body>
-   <div id="gradient">
+   <!-- <div id="gradient">
       <div id="layer0"></div>
       <div id="layer1"></div>
-   </div>
+   </div> -->
 
-   <div id="wraper">
-      <div id="feedback">
-         <form name="formFeedback">
-            <div>
+   <!-- form -->
+
+   <div class="wrap_form">
+      <div class="conteiner_form">
+         <form name="formFeedback" enctype="multipart/form-data" method="post" onsubmit="send(event, 'script/send.php')"
+            action="send.php">
+            <div class="cross"><span></span><span></span><span></span></div>
+
+            <div class="elem_form title">
                <h2>CONTACT US</h2>
-               <div class="line"></div>
+               <!-- <div class="line"></div> -->
+               <span id="cross"><span></span><span></span></span>
             </div>
-            <label class="label"><span>Name</span><input type="text" name="name" placeholder=""></label>
-            <label class="label"><span>Email</span><input type="email" name="email" placeholder=""></label>
-            <label class="label"><span>Please provide any additional information here</span><textarea name="comment"
-                  placeholder=""></textarea></label>
-            <label id="labelFile" class="label" tabindex="0"><span>You can attach a file</span><input id="exFile"
-                  type="file" name="exFile" tabindex="-1"></label>
-            <input id="botton" type="submit" value="Submit">
+
+            <div class="elem_form">
+               <label for="input_name" class="label_input">
+                  <span>Name</span>
+               </label>
+               <input id="input_name" type="text" name="name">
+            </div>
+
+            <div class="elem_form">
+               <label for="input_email" class="label_input">
+                  <span>Email</span>
+               </label>
+               <input id="input_email" type="email" name="email">
+            </div>
+
+            <div class="elem_form">
+               <label for="input_textarea" class="label_input">
+                  <span>Additional information</span>
+               </label>
+               <textarea id="input_textarea" name="comment"></textarea>
+            </div>
+
+            <div class="elem_form">
+               <label id="label_file" for="input_file" class="label_input" tabindex="0">
+                  <span>You can attach a file</span>
+               </label>
+               <input id="input_file" type="file" name="file" tabindex="-1">
+            </div>
+
+            <div class="elem_form">
+               <input id="submit_form" type="submit" value="Submit">
+            </div>
+
          </form>
       </div>
    </div>
 
-   <!-- <div style="width: 200px; height: 200px; background-color: beige; overflow-y: scroll;">
-      <div style="width: 150px; height: 400px; background-color: antiquewhite; opacity: 0.5;">
-      </div>
-   </div> -->
+   <script>
+
+      let inputFile = document.getElementById('input_file');
+      let label = document.getElementById('label_file').firstElementChild;
+      let info = label.innerText;
+      inputFile.addEventListener('change', () => {
+         if (inputFile.value) {
+            label.innerText = inputFile.value.split(/\\|\//).pop();
+         } else {
+            label.innerText = info;
+         }
+      })
+
+      function send(event, php) {
+         event.preventDefault();
+         var req = new XMLHttpRequest();
+         req.open('POST', php, true);
+         req.onload = function () {
+            if (req.status >= 200 && req.status < 400) {
+               let json = JSON.parse(this.response); // Ебанный internet explorer 11
+               console.log(json);
+
+               // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
+               if (json.result == "success") {
+                  // Если сообщение отправлено
+                  alert("Сообщение отправлено");
+               } else {
+                  // Если произошла ошибка
+                  alert("Ошибка. Сообщение не отправлено");
+               }
+               // Если не удалось связаться с php файлом
+            } else {alert("Ошибка сервера. Номер: " + req.status);}
+         };
+
+         req.onerror = function () {alert("Ошибка отправки запроса");};
+         req.send(new FormData(event.target));
+      }
+   </script>
 </body>
 
 </html>
