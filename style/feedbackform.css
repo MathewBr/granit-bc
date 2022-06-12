@@ -1,14 +1,19 @@
  .wrap_form {
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(242, 242, 242, 0.5);
+    background-color: rgba(242, 242, 242, 0.9);
     overflow: hidden;
+    z-index: 25;
+    visibility: hidden;
+    /* visibility: visible; */
  }
 
  .conteiner_form {
     position: absolute;
+    /* position: fixed; */
     right: 0;
     top: 0;
     bottom: 0;
@@ -16,9 +21,15 @@
     flex-direction: column-reverse;
     overflow: auto;
     padding-left: 1rem;
+    transform: translateX(100%);
+    transition: transform 400ms ease-in;
  }
 
- form {
+ .conteiner_form.jamp {
+    transform: translateX(0%);
+ }
+
+ #jampform {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -80,7 +91,7 @@
     display: block;
  }
 
- input,
+ .forjampform,
  #label_file {
     width: 100%;
     height: 2.5rem;

@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       status = getCoordinatesElement(parent, header.clientHeight, footer.clientHeight);
       parent = document.getElementById('main');
       paralaxElem = getParalaxElem(parent);
-      if (status && status.indicateParalax) {
-         // paralaxWork(paralaxElem, status.subScroll, 0.5, true, status.heightViewport);
-      }
+      learnMore();
    });
    observer.observe(mutationObj, {childList: true});
 });

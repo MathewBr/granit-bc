@@ -1,52 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
    document.querySelector('body').insertAdjacentHTML('beforeend', fragment);
    processingInputFile('label_file', 'input_file');
+   learnMore();
 });
 
 let fragment = `<div class="wrap_form">
-   < div class="conteiner_form" >
-      <form name="formFeedback" enctype="multipart/form-data" method="post" onsubmit="send(event, 'script/send.php')"
+   <div class="conteiner_form">
+      <form id="jampform" name="formFeedback" enctype="multipart/form-data" method="post" onsubmit="send(event, 'script/send.php')"
          action="send.php">
          <div class="cross"><span></span><span></span><span></span></div>
-
          <div class="elem_form title">
             <h2>CONTACT US</h2>
             <!-- <div class="line"></div> -->
             <span id="cross"><span></span><span></span></span>
          </div>
-
          <div class="elem_form">
             <label for="input_name" class="label_input">
                <span>Name</span>
             </label>
-            <input id="input_name" type="text" name="name">
+            <input class="forjampform" id="input_name" type="text" name="name">
          </div>
-
          <div class="elem_form">
             <label for="input_email" class="label_input">
                <span>Email</span>
             </label>
-            <input id="input_email" type="email" name="email">
+            <input class="forjampform" id="input_email" type="email" name="email">
          </div>
-
          <div class="elem_form">
             <label for="input_textarea" class="label_input">
                <span>Additional information</span>
             </label>
             <textarea id="input_textarea" name="comment"></textarea>
          </div>
-
          <div class="elem_form">
             <label id="label_file" for="input_file" class="label_input" tabindex="0">
                <span>You can attach a file</span>
             </label>
-            <input id="input_file" type="file" name="file" tabindex="-1">
+            <input class="forjampform" id="input_file" type="file" name="file" tabindex="-1">
          </div>
-
          <div class="elem_form">
-            <input id="submit_form" type="submit" value="Submit">
+            <input class="forjampform" id="submit_form" type="submit" value="Submit">
          </div>
-
       </form>
       </div >
    </div > `;
@@ -87,4 +81,36 @@ function send(event, php) {
 
    req.onerror = function () {alert("Ошибка отправки запроса");};
    req.send(new FormData(event.target));
+}
+
+function learnMore() {
+   let button = document.getElementById('learnMore');
+   if (button) {
+      let wrap = document.querySelector('body').querySelector('.wrap_form');
+      let conteiner = document.querySelector('.conteiner_form');
+      let cross = document.getElementById('cross');
+      button.addEventListener('click', () => {
+         wrap.style.visibility = 'visible';
+         conteiner.classList.add('jamp');
+      });
+
+      cross.addEventListener('click', () => {
+         conteiner.classList.remove('jamp');
+         conteiner.addEventListener('transitionend', () => {
+            if (!conteiner.classList.contains('jamp')) wrap.style.visibility = 'hidden';
+         });
+      });
+
+      // function close() {
+      //    conteiner.classList.remove('jamp');
+
+      //    function wrapunvisible() {
+      //       wrap.style.visibility = 'hidden';
+      //    }
+      //    conteiner.addEventListener('transitionend', wrapunvisible);
+      //    setTimeout(() => {
+      //       conteiner.removeEventListener('transitionend', wrapunvisible);
+      //    }, 1000);
+      // }
+   }
 }
