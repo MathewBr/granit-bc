@@ -63,7 +63,8 @@
    </div>
 
    <div id="feedback">
-      <form name="formFeedback">
+      <form name="formFeedback" enctype="multipart/form-data" method="post" onsubmit="send(event, 'script/send.php')"
+         action="send.php">
          <div>
             <h2>CONTACT US</h2>
             <div class="line"></div>
@@ -74,7 +75,7 @@
          <textarea name="comment" placeholder="Please provide any additional information here"></textarea>
 
          <div id="wrDoanlFile">
-            <label id="labelFile" tabindex="0">you can attach a file <input id="exFile" type="file" name="exFile"
+            <label id="labelFile" tabindex="0">you can attach a file <input id="exFile" type="file" name="file"
                   tabindex="-1"></label>
             <input id="botton" type="submit" value="Submit">
          </div>

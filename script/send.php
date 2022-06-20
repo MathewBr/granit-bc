@@ -3,6 +3,9 @@
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 require '../PHPMailer/Exception.php';
+$password = require '../../../config/config.php';
+
+// print_r($password);
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -28,7 +31,8 @@ try {
 
     $mail->Host       = 'smtp.gmail.com';
     $mail->Username   = 'matvei7berezin@gmail.com';
-    $mail->Password   = 'xkomfqdbefyuuqgm';
+    $mail->Password   = $password['password'];
+
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
     $mail->setFrom('mail@yandex.ru', 'Имя отправителя');

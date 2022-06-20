@@ -100,17 +100,5 @@ function learnMore() {
             if (!conteiner.classList.contains('jamp')) wrap.style.visibility = 'hidden';
          });
       });
-
-      // function close() {
-      //    conteiner.classList.remove('jamp');
-
-      //    function wrapunvisible() {
-      //       wrap.style.visibility = 'hidden';
-      //    }
-      //    conteiner.addEventListener('transitionend', wrapunvisible);
-      //    setTimeout(() => {
-      //       conteiner.removeEventListener('transitionend', wrapunvisible);
-      //    }, 1000);
-      // }
    }
 }
